@@ -17,11 +17,11 @@ This repository includes optimized deep learning models to speed up the deployme
 </p>
 
 ## Model Information
-The following table includes comprehensive information about each model, including application, framework, training and validation dataset, backbone, input size, computation as well as float and fixed-point precision. 
+The following table includes comprehensive information about each model, including application, framework, training and validation dataset, backbone, input size, computation as well as float and fixed-point precision.
 
 <details>
  <summary><b>Click here to view details</b></summary>
- 
+
 | No\. | Application              | Model                          | Name                                                | Framework  | Backbone       | Input Size | OPS per image | Training Set                            | Val Set                 | Float \(Top1, Top5\)/ mAP/mIoU | Fixed \(Top1, Top5\)/mAP/mIoU |
 |------|--------------------------|--------------------------------|-----------------------------------------------------|------------|----------------|------------|---------------|-----------------------------------------|-------------------------|--------------------------------|-------------------------------|
 | 1    | Image Classification     | resnet50                       | cf\_resnet50\_imagenet\_224\_224\_7\.7G             | caffe      | resnet50       | 224\*224   | 7\.7G         | ImageNet Train                          | ImageNet Validataion    | 0\.74828/0\.92135              | 0\.7338/0\.9130               |
@@ -42,9 +42,9 @@ The following table includes comprehensive information about each model, includi
 | 16   | ADAS Detection           | yolov3\_adas\_prune\_0\.9      | dk\_yolov3\_cityscapes\_256\_512\_0\.9\_5\.46G      | darknet    | darknet\-53    | 256\*512   | 5\.46G        | cityscape train                         | cityscape val           | 55\.20%                        | 53\.00%                       |
 | 17   | Object Detection         | yolov3\_voc                    | dk\_yolov3\_voc\_416\_416\_65\.42G                  | darknet    | darknet\-53    | 416\*416   | 65\.42G       | voc07\+12\_trainval                     | voc07\_test             | 82\.4%\(MaxIntegral\)          | 81\.5%\(MaxIntegral\)         |
 | 18   | Object Detection         | tf\_yolov3\_voc                | tf\_yolov3\_voc\_416\_416\_65\.63G                  | tensorflow | darknet\-53    | 416\*416   | 65\.63G       | voc07\+12\_trainval                     | voc07\_test             | 78\.46%\(11 points\)           | 77\.38%\(11 points\)          |
-| 19   | Object Detection         | refinedet\_pruned\_0\.8        | cf\_refinedet\_coco\_360\_480\_0\.8\_25G            | caffe      | VGG\-bn\-16    | 360\*480   | 25G           | coco2014\_train\_person                 | coco2014\_val\_person   | 67\.68%                        | 67\.47%                       |
-| 20   | Object Detection         | refinedet\_pruned\_0\.92       | cf\_refinedet\_coco\_360\_480\_0\.92\_10\.10G       | caffe      | VGG\-bn\-16    | 360\*480   | 10\.10G       | coco2014\_train\_person                 | coco2014\_val\_person   | 64\.60%                        | 64\.50%                       |
-| 21   | Object Detection         | refinedet\_pruned\_0\.96       | cf\_refinedet\_coco\_360\_480\_0\.96\_5\.08G        | caffe      | VGG\-bn\-16    | 360\*480   | 5\.08G        | coco2014\_train\_person                 | coco2014\_val\_person   | 60\.89%                        | 60\.65%                       |
+| 19   | Object Detection         | refinedet\_pruned\_0\.96       | cf\_refinedet\_coco\_360\_480\_0\.96\_5\.08G        | caffe      | VGG\-bn\-16    | 360\*480   | 5\.08G        | coco2014\_train\_person                 | coco2014\_val\_person   | 60\.89%                        | 60\.65%                       |
+| 20   | Object Detection         | refinedet\_pruned\_0\.8        | cf\_refinedet\_coco\_360\_480\_0\.8\_25G            | caffe      | VGG\-bn\-16    | 360\*480   | 25G           | coco2014\_train\_person                 | coco2014\_val\_person   | 67\.68%                        | 67\.47%                       |
+| 21   | Object Detection         | refinedet\_pruned\_0\.92       | cf\_refinedet\_coco\_360\_480\_0\.92\_10\.10G       | caffe      | VGG\-bn\-16    | 360\*480   | 10\.10G       | coco2014\_train\_person                 | coco2014\_val\_person   | 64\.60%                        | 64\.50%                       |
 | 22   | ADAS Segmentation        | FPN                            | cf\_fpn\_cityscapes\_256\_512\_8\.9G                | caffe      | Google\_v1\_BN | 256\*512   | 8\.9G         | Cityscapes gtFineTrain\(2975\)          | Cityscapes Val\(500\)   | 0\.5669                        | 0\.5645                       |
 | 23   | ADAS Lane Detection      | VPGnet\_pruned\_0\.99          | cf\_VPGnet\_caltechlane\_480\_640\_0\.99\_2\.5G     | caffe      | VGG            | 480\*640   | 2\.5G         | caltech\-lanes\-train\-dataset          | caltech lane            | 88\.639%\(F1\-score\)          | 87%\(F1\-score\)              |
 | 24   | Pose Estimation          | SP\-net                        | cf\_SPnet\_aichallenger\_224\_128\_0\.54G           | caffe      | Google\_v1\_BN | 128\*224   | 548\.6M       | ai\_challenger                          | ai\_challenger          | 88\.2%\(PCKh0\.5\)             | 87\.86%\(PCKh0\.5\)           |
@@ -81,11 +81,11 @@ For example, `cf_refinedet_coco_480_360_0.8_25G` is a `RefineDet` model trained 
 ## Model Download
 The following table lists various models, download link and MD5 checksum for the zip file of each model.
 
-**Note:** To download all the models, visit [all_models.zip](https://www.xilinx.com/bin/public/openDownload?filename=all_models.zip). 
+**Note:** To download all the models, visit [all_models.zip](https://www.xilinx.com/bin/public/openDownload?filename=all_models.zip).
 
 <details>
  <summary><b>Click here to view details</b></summary>
- 
+
 If you are a:
  - Linux user, use the [get_model.sh](get_model.sh) script to download all the models.   
  - Windows user, use the download link listed in the following table to download a model.
@@ -139,22 +139,22 @@ Download and extract the model archive to your working area on the local hard di
 
 #### Caffe Model Directory Structure
 For a Caffe model, you should see the following directory structure:
-    
-    ├── labelmap.prototxt               # Contains information of the detection class for some models 
+
+    ├── labelmap.prototxt               # Contains information of the detection class for some models
     │                                     such as SSD, RefineDet.
-    ├── readme.md                       # Contains the environment requirement and data preprocess information. 
+    ├── readme.md                       # Contains the environment requirement and data preprocess information.
     │                                     Refer this file to know more about creating `float.prototxt` by adding
     │                                     datalayer to `test.prototxt` in the `float` directory.
     ├── deploy                          
     │   ├── deploy.caffemodel           # Input to the compiler. The same with deploy.caffemodel in the `fix` directory.
     │   └── deploy.prototxt             # Input to the compiler. The modified prototxt based on deploy.prototxt
-    │                                     in the `fix` directory, which removes unnecessary or unsupported layers 
+    │                                     in the `fix` directory, which removes unnecessary or unsupported layers
     │                                     for compilation.
     ├── fix                             
     │   ├── deploy.caffemodel           # Quantized weights, the output of decent_q without modification.
     │   ├── deploy.prototxt             # Quantized prototxt, the output of decent_q without modification.
-    │   ├── fix_test.prototxt           # Used to run evaluation with fix_train_test.caffemodel on GPU 
-    │   │                                 using python test code released in near future. Some models 
+    │   ├── fix_test.prototxt           # Used to run evaluation with fix_train_test.caffemodel on GPU
+    │   │                                 using python test code released in near future. Some models
     │   │                                 don't have this file if they are converted from Darknet (Yolov2, Yolov3),
     │   │                                 Pytorch (ReID) or there is no Caffe Test (Densebox).
     │   ├── fix_train_test.caffemodel   # Quantized weights can be used for fixed-point training and evaluation.    
@@ -162,25 +162,25 @@ For a Caffe model, you should see the following directory structure:
     │                                     on GPU when datalayer modified to user's data path.
     └── float                           
         ├── float.caffemodel            # Trained float-point weights.
-        ├── float.prototxt              # Modified test.prototxt as the input to decent_q along 
-        │                                 with float.caffemodel. decent_q is Xilinx quantization tool 
-        │                                 which quantizes float-point to fixed-point model with minimal 
-        │                                 accuracy loss. 
+        ├── float.prototxt              # Modified test.prototxt as the input to decent_q along
+        │                                 with float.caffemodel. decent_q is Xilinx quantization tool
+        │                                 which quantizes float-point to fixed-point model with minimal
+        │                                 accuracy loss.
         ├── test.prototxt               # Used to run evaluation with python test codes released in near future.    
-        └── trainval.prorotxt           # Used for training and testing with caffe train/test command 
-                                          when datalayer modified to user's data path. Some models don't 
+        └── trainval.prorotxt           # Used for training and testing with caffe train/test command
+                                          when datalayer modified to user's data path. Some models don't
                                           have this file if they are converted from Darknet (Yolov2, Yolov3),
                                           Pytorch (ReID) or there is no Caffe Test (Densebox).          
-     
+
 
 **Note:** For more information on `decent_q`, see [DNNDK User Guide](https://www.xilinx.com/support/documentation/user_guides/ug1327-dnndk-user-guide.pdf).
 
 #### Tensorflow Model Directory Structure
 For a Tensorflow model, you should see the following directory structure:
 
-    
+
     ├── input_fn.py                     # Python function to read images in calibration dataset and do data preprocess.
-    ├── readme.md                       # Contains the environment requirement, the input and output nodes as well as 
+    ├── readme.md                       # Contains the environment requirement, the input and output nodes as well as
     │                                     the data preprocess and postprocess information.
     ├── fix                          
     │   ├── deploy.model.pb             # Quantized model for the compiler (extended Tensorflow format).
@@ -191,7 +191,7 @@ For a Tensorflow model, you should see the following directory structure:
 
 
 ## Model Performance
-All the models in the Model Zoo have been deployed on Xilinx hardware with [DNNDK™ (Deep Neural Network Development Kit)](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html) and [Xilinx AI SDK](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html). The performance number including end-to-end throughput and latency for each model on various boards with different DPU configurations are listed in the following sections. 
+All the models in the Model Zoo have been deployed on Xilinx hardware with [DNNDK™ (Deep Neural Network Development Kit)](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html) and [Xilinx AI SDK](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html). The performance number including end-to-end throughput and latency for each model on various boards with different DPU configurations are listed in the following sections.
 
 For more information about DPU, see [DPU IP Product Guide](https://www.xilinx.com/support/documentation/ip_documentation/dpu/v2_0/pg338-dpu.pdf).
 
@@ -251,7 +251,7 @@ The following table lists the performance number including end-to-end throughput
 <details>
  <summary><b>Click here to view details</b></summary>
 
-The following table lists the performance number including end-to-end throughput and latency for each model on the `ZCU102 (0432055-05)` board with a `3 * B4096  @ 287MHz   V1.4.0` DPU configuration: 
+The following table lists the performance number including end-to-end throughput and latency for each model on the `ZCU102 (0432055-05)` board with a `3 * B4096  @ 287MHz   V1.4.0` DPU configuration:
 
 
 | No\. | Model                          | Name                                                | E2E latency \(ms\) Thread num =1 | E2E throughput \-fps\(Single Thread\) | E2E throughput \-fps\(Multi Thread\) |
@@ -300,7 +300,7 @@ The following table lists the performance number including end-to-end throughput
 <details>
  <summary><b>Click here to view details</b></summary>
 
-The following table lists the performance number including end-to-end throughput and latency for each model on the `ZCU104` board with a `2 * B4096  @ 305MHz   V1.4.0` DPU configuration: 
+The following table lists the performance number including end-to-end throughput and latency for each model on the `ZCU104` board with a `2 * B4096  @ 305MHz   V1.4.0` DPU configuration:
 
 
 | No\. | Model                          | Name                                                | E2E latency \(ms\) Thread num =1 | E2E throughput \-fps\(Single Thread\) | E2E throughput \-fps\(Multi Thread\) |
@@ -348,8 +348,8 @@ The following table lists the performance number including end-to-end throughput
 ### Performance on Ultra96
 <details>
  <summary><b>Click here to view details</b></summary>
- 
-The following table lists the performance number including end-to-end throughput and latency for each model on the `Ultra96` board with a `1 * B1600  @ 287MHz   V1.4.0` DPU configuration: 
+
+The following table lists the performance number including end-to-end throughput and latency for each model on the `Ultra96` board with a `1 * B1600  @ 287MHz   V1.4.0` DPU configuration:
 
 **Note:** The original power supply of Ultra96 is not designed for high performance AI workload. The board may occasionally hang to run few models, When multi-thread is used. For such situations, `NA` is specified in the following table.
 
@@ -395,7 +395,7 @@ The following table lists the performance number including end-to-end throughput
 | 37   | resnet18\_wide                 | tf\_resnet18\_imagenet\_224\_224\_28G               | 97\.72                          | 10\.2333                                | 10\.3833                               |
 </details>
 
-## Contributing 
+## Contributing
 We welcome community contributions. When contributing to this repository, first discuss the change you wish to make via:
 
 * [GitHub Issues](https://github.com/Xilinx/TechDocs/issues)
