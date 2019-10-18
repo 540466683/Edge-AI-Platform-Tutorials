@@ -1,20 +1,14 @@
-<table>
-<tr>
-  <td colspan="4" align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/>
-  </td>
-</tr>
-<tr>
-<td colspan="4" align="center"><h1>Xilinx AI Model Zoo</h1>
-</td>
-</tr>
-</table>
+<table width="100%">
+  <tr width="100%">
+    <td align="center"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>AI Model Zoo</h1>
+    </td>
+ </tr>
+ </table>
 
 # Introduction
-This repository includes optimized deep learning models to speed up the deployment of deep learning inference on Xilinx &trade; platforms. These models cover different applications, including but not limited to ADAS/AD, video surveillance, robotics, data center, etc. You can get started with these free pre-trained models to enjoy the benefits of deep learning acceleration.
+This repository includes optimized deep learning models to speed up the deployment of deep learning inference on Xilinx&trade; platforms. These models cover different applications, including but not limited to ADAS/AD, video surveillance, robotics, data center, etc. You can get started with these free pre-trained models to enjoy the benefits of deep learning acceleration.
 
-<p align="center">
-  <img width="1000" height="500" src="images/xlnx_model_zoo.png">
-</p>
+![Missing Image:xlnx_model_zoo.png](images/xlnx_model_zoo.png)
 
 ## Model Information
 The following table includes comprehensive information about each model, including application, framework, training and validation dataset, backbone, input size, computation as well as float and fixed-point precision.
@@ -87,7 +81,7 @@ The following table lists various models, download link and MD5 checksum for the
  <summary><b>Click here to view details</b></summary>
 
 If you are a:
- - Linux user, use the [get_model.sh](get_model.sh) script to download all the models.   
+ - Linux user, use the [`get_model.sh`](reference-files/get_model.sh) script to download all the models.   
  - Windows user, use the download link listed in the following table to download a model.
 
 
@@ -173,7 +167,7 @@ For a Caffe model, you should see the following directory structure:
                                           Pytorch (ReID) or there is no Caffe Test (Densebox).          
 
 
-**Note:** For more information on `decent_q`, see [DNNDK User Guide](https://www.xilinx.com/support/documentation/user_guides/ug1327-dnndk-user-guide.pdf).
+**Note:** For more information on `decent_q`, see the [DNNDK User Guide](https://www.xilinx.com/support/documentation/sw_manuals/ai_inference/v1_6/ug1327-dnndk-user-guide.pdf).
 
 #### Tensorflow Model Directory Structure
 For a Tensorflow model, you should see the following directory structure:
@@ -191,12 +185,12 @@ For a Tensorflow model, you should see the following directory structure:
 
 
 ## Model Performance
-All the models in the Model Zoo have been deployed on Xilinx hardware with [DNNDK™ (Deep Neural Network Development Kit)](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html) and [Xilinx AI SDK](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html). The performance number including end-to-end throughput and latency for each model on various boards with different DPU configurations are listed in the following sections.
+All the models in the Model Zoo have been deployed on Xilinx hardware with [DNNDK™ (Deep Neural Network Development Kit)](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html#edge) and [Xilinx AI SDK](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html#edge). The performance number including end-to-end throughput and latency for each model on various boards with different DPU configurations are listed in the following sections.
 
-For more information about DPU, see [DPU IP Product Guide](https://www.xilinx.com/support/documentation/ip_documentation/dpu/v2_0/pg338-dpu.pdf).
+For more information about DPU, see [DPU IP Product Guide](https://www.xilinx.com/support/documentation/ip_documentation/dpu/v3_0/pg338-dpu.pdf).
 
 
-**Note:** The model performance number listed in the following sections is generated with DNNDK v3.1 and Xilinx AI SDK v2.0.x. For each board, a different DPU configuration is used. DNNDK and Xilinx AI SDK can be downloaded for free from https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html.
+**Note:** The model performance number listed in the following sections is generated with DNNDK v3.1 and Xilinx AI SDK v2.0.x. For each board, a different DPU configuration is used. DNNDK and Xilinx AI SDK can be downloaded for free from [https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html](https://www.xilinx.com/products/design-tools/ai-inference/ai-developer-hub.html#edge).
 
 ### Performance on ZCU102 (0432055-04)
 <details>
@@ -231,7 +225,7 @@ The following table lists the performance number including end-to-end throughput
 | 22   | FPN                            | cf\_fpn\_cityscapes\_256\_512\_8\.9G                | 16\.58                          | 60\.3                                   | 203\.867                               |
 | 23   | VPGnet\_pruned\_0\.99          | cf\_VPGnet\_caltechlane\_480\_640\_0\.99\_2\.5G     | 9\.44                           | 105\.9                                  | 424\.667                               |
 | 24   | SP\-net                        | cf\_SPnet\_aichallenger\_224\_128\_0\.54G           | 1\.73                           | 579\.067                                | 1620\.67                               |
-| 25   | Openpose\_pruned\_0\.3         | cf\_openpose\_aichallenger\_368\_368\_0\.3\_189\.7G | 279\.07                         | 3\.58333                                | 16\.55                                  |
+| 25   | Openpose\_pruned\_0\.3         | cf\_openpose\_aichallenger\_368\_368\_0\.3\_189\.7G | 279\.07                         | 3\.58333                                | 38\.5                                  |
 | 26   | yolov2\_voc                    | dk\_yolov2\_voc\_448\_448\_34G                      | 39\.76                          | 25\.15                                  | 86\.35                                 |
 | 27   | yolov2\_voc\_pruned\_0\.66     | dk\_yolov2\_voc\_448\_448\_0\.66\_11\.56G           | 18\.42                          | 54\.2833                                | 211\.217                               |
 | 28   | yolov2\_voc\_pruned\_0\.71     | dk\_yolov2\_voc\_448\_448\_0\.71\_9\.86G            | 16\.42                          | 60\.9167                                | 242\.433                               |
@@ -406,4 +400,7 @@ You can also submit a pull request with details on how to improve the product. P
 
 ## License
 
-Xilinx AI Model Zoo is licensed under [Apache License Version 2.0](LICENSE). By contributing to the project, you agree to the license and copyright terms therein and release your contribution under these terms.
+Xilinx AI Model Zoo is licensed under [Apache License Version 2.0](reference-files/LICENSE). By contributing to the project, you agree to the license and copyright terms therein and release your contribution under these terms.
+
+<hr/>
+<p align="center"><sup>Copyright&copy; 2019 Xilinx</sup></p>
