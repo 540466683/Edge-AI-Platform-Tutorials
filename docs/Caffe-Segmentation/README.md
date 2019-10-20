@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ML-Caffe-Segmentation-Tutorial
 The following is a **tutorial** on how to **train, quantize, compile, and deploy** various segmentation networks including: **ENet, ESPNet, FPN, UNet, and a reduced compute version of UNet that we'll call Unet-lite**.  The training dataset used for this tutorial is the **Cityscapes dataset**, and the **Caffe** framework is used for training the models. After training, the **DNNDK tools** are used to quantize and compile the models, and ARM C++ application examples are included for deploying the models on a Xilinx **ZCU102** target board.  For background information on ESPNet, ENet, and general segmentation approaches, the [Segmentation Introduction Presentation](PDF/Segmentation_Introduction.pdf) has been provided.
 
