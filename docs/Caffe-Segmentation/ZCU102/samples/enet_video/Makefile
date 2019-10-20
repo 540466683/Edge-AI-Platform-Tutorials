@@ -9,7 +9,7 @@ CC        :=   gcc
 LDFLAGS   = $(shell pkg-config --libs opencv)
 
 # linking libraries of DNNDK 
-LDFLAGS   +=  -ln2cube -lpthread -ldputils -lhineon -lSDL
+LDFLAGS   +=  -ln2cube -lpthread -ldputils -lhineon
 
 CUR_DIR   =   $(shell pwd)
 SRC       =   $(CUR_DIR)/src
