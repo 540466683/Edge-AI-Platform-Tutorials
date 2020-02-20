@@ -1,7 +1,10 @@
-# MNIST classification with Vitis-AI
+<table style="width:100%">
+  <tr>
+    <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>MNIST Classification with Vitis AI</h2>
+</th>
+  </tr>
 
-
-
+</table>
 ### Current status
 
 1. Tested with Vitis-AI 1.0
@@ -81,13 +84,13 @@ See the <a href="https://github.com/Xilinx/Vitis-AI">Vitis-AI GitHub README.md</
   + ``4_quant.sh`` : This script first creates a set of image files to be used in the calibration phase of quantization and then launches the ``vai_q_tensorflow quantize`` command to convert the floating-point frozen graph to a fixed-point integer model.
 
   + ``5_eval_quant_graph.sh`` : This step is optional but highly recommended - it will run the same evaluation function that was used to evaluate the frozen graph on the quantized model. Users should confirm that the accuracy reported by the evaluation of the quantized model is sufficient for their requirements and similar to the results for the floating-point models.
-  
+
   + ``6_compile.sh`` : Launches the ``vai_c_tensorflow`` command to compile the quantized model into an .elf file.
 
-  + ``7_make target.sh`` : Copies the .elf and images to the target folder ready to be copied to the evaluation board's SD card. The .elf file will be converted to a Shared Library/Static Object .so file using the ARM compiler on the evaulation board. 
+  + ``7_make target.sh`` : Copies the .elf and images to the target folder ready to be copied to the evaluation board's SD card. The .elf file will be converted to a Shared Library/Static Object .so file using the ARM compiler on the evaulation board.
 
 
-  
+
 ## 6. Image pre-processing
 
 All images are undergo simple pre-processing before being used for training, evaluation and quantization calibration. The images are normalized to bring all pixel values into the range 0 to 1 by dividing them by 255.
@@ -99,10 +102,10 @@ All images are undergo simple pre-processing before being used for training, eva
 
 2. Open a terminal and ``cd`` into the repository folder. Start the Vitis-AI tools docker - depending on where you have installed it, the command will look something like this:
 
- ``/home/mharvey/Vitis-AI/docker_run.sh xilinx/vitis-ai:tools-1.0.0-gpu`` 
- 
+ ``/home/mharvey/Vitis-AI/docker_run.sh xilinx/vitis-ai:tools-1.0.0-gpu``
+
  or like this if you are using the CPU-only tools docker:
- 
+
   ``/home/mharvey/Vitis-AI/docker_run.sh xilinx/vitis-ai:tools-1.0.0-cpu``.
 
 If you are running the training step, it is highly recommnded to use the GPU version of the Vitis Tools Docker container.
@@ -166,7 +169,7 @@ The complete ``target`` folder needs to be copied to the ``/home/root`` folder o
 
 
 
-With the ``target`` folder copied to the SD Card and the ZCU102 booted, you can issue the command for launching the application - note that this done on the ZCU102 board, not the host machine, so it requires a connection to the ZCU102 such as a serial connection to the UART or an SSH connection via Ethernet. 
+With the ``target`` folder copied to the SD Card and the ZCU102 booted, you can issue the command for launching the application - note that this done on the ZCU102 board, not the host machine, so it requires a connection to the ZCU102 such as a serial connection to the UART or an SSH connection via Ethernet.
 
 
 The commands to start the application are:
@@ -178,11 +181,9 @@ python3 mnist_app.py -t 2 -b 21 -j /home/root/target/dpuv2_rundir/
 ```
 
 ..where -t defines the number of threads and -b defines the input batchsize. The -j option gives the path of the folder that contains the meta.json file.
- 
- 
+
+
 The application will start and after a few seconds will show the throughput of the DPU in frames/sec, the accuracy and a list of any images that were incorrectly predicted:
 
 
 ![Alt text](./img/run_app.png?raw=true "run_app")
-
-
