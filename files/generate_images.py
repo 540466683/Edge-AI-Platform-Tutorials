@@ -1,5 +1,5 @@
 '''
- Copyright 2019 Xilinx Inc.
+ Copyright 2020 Xilinx Inc.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -38,9 +38,13 @@ Command line arguments:
            : If it doesn't already exist, it will be created.
            : Default is 'image_dir'.
 
+--label_list: Name of labels list file.
+            : Will be written to folder specified by --image_dir.
+            : Default is '' which causes the file to not be generated.
+
 --image_list: Name of images list file.
             : Will be written to folder specified by --image_dir.
-            : Default is 'image_list.txt'.
+            : Default is '' which causes the file to not be generated.
 
 --image_format: Specifies image file format.
               : Only possible valid choices are 'png','jpg' or 'bmp'.
@@ -98,8 +102,10 @@ def gen_images(dataset, subset, image_dir, image_list, label_list, max_images, i
     classes = ['zero','one','two','three','four','five','six','seven','eight','nine']
 
   # create file for list of images & labels
-  fi = open(os.path.join(image_dir, image_list), 'w')
-  fl = open(os.path.join(image_dir, label_list), 'w')
+  if image_list != '':
+    fi = open(os.path.join(image_dir, image_list), 'w')
+  if label_list != '':
+    fl = open(os.path.join(image_dir, label_list), 'w')
 
   # which subset?
   if (subset=='train'):
@@ -127,13 +133,18 @@ def gen_images(dataset, subset, image_dir, image_list, label_list, max_images, i
     #fi.write('image_'+str(i)+'.'+image_format+'\n')
 
     # use this line if complete path of image file is to be written to image list
-    fi.write(img_file+'\n')
+    if image_list != '':
+      fi.write(img_file+'\n')
 
     # write label into list
-    fl.write(str(label_array[i]).strip('[]') +'\n')
+    if label_list != '':
+      fl.write(str(label_array[i]).strip('[]') +'\n')
 
-  fi.close()
-  fl.close()
+  if image_list != '':
+    fi.close()
+  if label_list != '':
+    fl.close()
+
   print ('FINISHED GENERATING IMAGES')
 
   return
@@ -160,12 +171,12 @@ def main():
                   help='Path to folder for saving images and images list file. Default is image_dir')  
   ap.add_argument('-li', '--image_list',
                   type=str,
-                  default='image_list.txt',
-                  help='Name of images list file. Default is image_list.txt')  
+                  default='',
+                  help='Name of images list file. Default is not to produce the file')  
   ap.add_argument('-ll', '--label_list',
                   type=str,
-                  default='label_list.txt',
-                  help='Name of labels list file. Default is label_list.txt')  
+                  default='',
+                  help='Name of labels list file. Default is not to produce the file')  
   ap.add_argument('-f', '--image_format',
                   type=str,
                   default='png',

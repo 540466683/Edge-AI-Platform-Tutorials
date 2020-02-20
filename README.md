@@ -1,10 +1,6 @@
-<table style="width:100%">
-  <tr>
-    <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>CIFAR10 Classification with TensorFlow</h2>
-</th>
-  </tr>
+# MNIST classification with Vitis-AI
 
-</table>
+
 
 ### Current status
 
@@ -22,36 +18,22 @@ The application code in this example design is written in Python and uses the Un
 
 We will run the following steps:
 
-  + Training and evaluation of small custom convolutional neural network using TensorFlow.
+  + Training and evaluation of a small custom convolutional neural network using TensorFlow.
   + Removal of the training nodes and conversion of the graph variables to constants (..often referred to as 'freezing the graph').
-  + Evaluation of the frozen model using the CIFAR-10 test dataset.
+  + Evaluation of the frozen model using the MNIST test dataset.
   + Quantization of the floating-point frozen model.
-  + Evaluation of the quantized model using the CIFAR-10 test dataset.
+  + Evaluation of the quantized model using the MNIST test dataset.
   + Compilation of the quantized model to create the .elf file ready for execution on the DPU accelerator IP.
   + Conversion of the .elf file to a Shared Library/Static Object file (.so) for use with the Python APIs.
   + Download and run the application on an evaluation board.
 
 
-## 2. The CIFAR-10 dataset
+## 2. The MNIST dataset
 
-CIFAR-10 is a publically available dataset that contains a total of 60k RGB images each of which are 32pixels x 32pixels x8bits per color channel. The small image size of 32 x 32 means that it is not very useful for real-world applications, but the CIFAR-10 dataset makes a good starting point for studying machine learning. The complete dataset of 60k images is normally divided into 50k images for training and 10k images for validation.
-
-There are a total of 10 mutually exclusive classes (or labels):
+The MNIST hadwritten digits dataset is a publically available dataset that contains a total of 70k 8bit grayscale images each of which are 28pixels x 28pixels. The datset dataset is considered to be the 'hello world' of machine learning. The complete dataset of 70k images is normally divided into 60k images for training and 10k images for validation.
 
 
-| Class index | Class name |
-| :---: | --- |
-| 0 | airplane |
-| 1 | automobile |
-| 2 | bird |
-| 3 | cat |
-| 4 | deer |
-| 5 | dog |
-| 6 | frog |
-| 7 | horse |
-| 8 | ship |
-| 9 | truck |
-
+![Alt text](./img/mnist.png?raw=true "Example MNIST images")
 
 
 ## 3. The convolution neural network
@@ -87,25 +69,25 @@ See the <a href="https://github.com/Xilinx/Vitis-AI">Vitis-AI GitHub README.md</
 
  ..so if either of the ``BUILD`` or ``QUANT`` variables are modified in ``0_setenv.sh`` then the absolute path in image_input_fn.py will also need to be modified.
 
- It is highly recommended to leave the ``NUM_IMAGES`` variable set to 1000 as this is the minimum recommnded number of images for calibration of the quantization.
+ It is highly recommended to leave the ``CALIB_IMAGES`` variable set to 1000 as this is the minimum recommnded number of images for calibration of the quantization.
 
 
   + ``1_train.sh``  : Runs training and evaluation of the network. Will save the trained model as a graph and checkpoint.
 
   + ``2_freeze.sh`` : Converts the inference graph and checkpoint into a single binary protobuf file (.pb). The output .pb file is generally known as a 'frozen graph' since all variables are converted into constants and gpraph nodes associated with training such as the optimizer and loss functions are stripped out.
 
-  + ``3_eval_frozen_graph.sh`` : This is an optional step which tests the accuracy of the frozen graph. The accuracy results should be very simialr to the results obtained after training.
+  + ``3_eval_frozen_graph.sh`` : This is an optional step which tests the accuracy of the frozen graph. The accuracy results should be very similar to the results obtained after training.
 
   + ``4_quant.sh`` : This script first creates a set of image files to be used in the calibration phase of quantization and then launches the ``vai_q_tensorflow quantize`` command to convert the floating-point frozen graph to a fixed-point integer model.
 
   + ``5_eval_quant_graph.sh`` : This step is optional but highly recommended - it will run the same evaluation function that was used to evaluate the frozen graph on the quantized model. Users should confirm that the accuracy reported by the evaluation of the quantized model is sufficient for their requirements and similar to the results for the floating-point models.
-
+  
   + ``6_compile.sh`` : Launches the ``vai_c_tensorflow`` command to compile the quantized model into an .elf file.
 
-  + ``7_make target.sh`` : Copies the .elf and images to the target folder ready to be copied to the evaluation board's SD card. The .elf file will be converted to a Shared Library/Static Object .so file using the ARM compiler on the evaulation board.
+  + ``7_make target.sh`` : Copies the .elf and images to the target folder ready to be copied to the evaluation board's SD card. The .elf file will be converted to a Shared Library/Static Object .so file using the ARM compiler on the evaulation board. 
 
 
-
+  
 ## 6. Image pre-processing
 
 All images are undergo simple pre-processing before being used for training, evaluation and quantization calibration. The images are normalized to bring all pixel values into the range 0 to 1 by dividing them by 255.
@@ -117,18 +99,18 @@ All images are undergo simple pre-processing before being used for training, eva
 
 2. Open a terminal and ``cd`` into the repository folder. Start the Vitis-AI tools docker - depending on where you have installed it, the command will look something like this:
 
- ``/home/username/Vitis-AI/docker_run.sh xilinx/vitis-ai:tools-1.0.0-gpu``
-
+ ``/home/mharvey/Vitis-AI/docker_run.sh xilinx/vitis-ai:tools-1.0.0-gpu`` 
+ 
  or like this if you are using the CPU-only tools docker:
-
-  ``/home/username/Vitis-AI/docker_run.sh xilinx/vitis-ai:tools-1.0.0-cpu``.
+ 
+  ``/home/mharvey/Vitis-AI/docker_run.sh xilinx/vitis-ai:tools-1.0.0-cpu``.
 
 If you are running the training step, it is highly recommnded to use the GPU version of the Vitis Tools Docker container.
 
 3. Activate the TensorFlow virtual environment with ``conda activate vitis-ai-tensorflow``.
 
 
-![Alt text](./files/img/tools_docker.png?raw=true "tools_docker")
+![Alt text](./img/tools_docker.png?raw=true "tools_docker")
 
 
 
@@ -151,7 +133,7 @@ $ source ./7_make_target.sh
 When the flow completes, the `target` folder will contain everything needed to run the application on the target platform. This `target` folder will need to be copied to the SD card (see steps below).It should contain the following files:
 
   + a dpuv2_rundir folder that contains a meta.json file.
-  + the cifar10_app.py script which is the Python script to execute on the target board.
+  + the mnist_app.py script which is the Python script to execute on the target board.
   + the runner.py Python script.
   + The images folder that contains JPEG images from the dataset.
   + The .elf file.
@@ -159,7 +141,7 @@ When the flow completes, the `target` folder will contain everything needed to r
 
 
 
-## 8. Running the application on the ZCU102 board
+## 8 Running the application on the ZCU102 board
 
 The SD card for the ZCU102 will need to be flashed with the appropriate board image which can be found <a href="https://www.xilinx.com/bin/public/openDownload?filename=xilinx-zcu102-dpu-v2019.2.img.gz">here</a>.
 
@@ -184,7 +166,7 @@ The complete ``target`` folder needs to be copied to the ``/home/root`` folder o
 
 
 
-With the ``target`` folder copied to the SD Card and the ZCU102 booted, you can issue the command for launching the application - note that this done on the ZCU102 board, not the host machine, so it requires a connection to the ZCU102 such as a serial connection to the UART or an SSH connection via Ethernet.
+With the ``target`` folder copied to the SD Card and the ZCU102 booted, you can issue the command for launching the application - note that this done on the ZCU102 board, not the host machine, so it requires a connection to the ZCU102 such as a serial connection to the UART or an SSH connection via Ethernet. 
 
 
 The commands to start the application are:
@@ -192,13 +174,15 @@ The commands to start the application are:
 ```shell
 cd target
 source ./compile_so.sh
-python3 cifar10_app.py -t 3 -b 6 -j /home/root/target/dpuv2_rundir/
+python3 mnist_app.py -t 2 -b 21 -j /home/root/target/dpuv2_rundir/
 ```
 
 ..where -t defines the number of threads and -b defines the input batchsize. The -j option gives the path of the folder that contains the meta.json file.
+ 
+ 
+The application will start and after a few seconds will show the throughput of the DPU in frames/sec, the accuracy and a list of any images that were incorrectly predicted:
 
-The application will start and after a few seconds will show the throughput in frames/sec.
 
-## 9 References
+![Alt text](./img/run_app.png?raw=true "run_app")
 
-+ CIFAR-10 dataset developed by Alex Krizhevsky for <a href="https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf">Learning Multiple Layers of Features from Tiny Images</a>.
+

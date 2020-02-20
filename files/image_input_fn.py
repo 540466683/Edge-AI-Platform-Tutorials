@@ -1,5 +1,5 @@
 '''
- Copyright 2019 Xilinx Inc.
+ Copyright 2020 Xilinx Inc.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -28,11 +28,11 @@ def calib_input(iter):
     curline = line[iter * calib_batch_size + index]
     calib_image_name = curline.strip()
 
-    # open image as BGR
-    image = cv2.imread(calib_image_name)
+    # open image as grayscale
+    image = cv2.imread(calib_image_name, cv2.IMREAD_GRAYSCALE)
 
-    # change to RGB
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    # reshape
+    image = image.reshape(28,28,1)
     
     # normalize
     image = image/255.0

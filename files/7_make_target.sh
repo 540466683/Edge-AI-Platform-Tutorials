@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright 2019 Xilinx Inc.
+# Copyright 2020 Xilinx Inc.
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,8 +29,13 @@ mkdir -p ${TARGET}/images
 cp ${COMPILE}/*.elf ${TARGET}/.
 echo "  Copied elf file(s) to target folder"
 
-# copy image files to target/images folder
-cp ${QUANT}/images/*.jpg ${TARGET}/images/.
+# create image files and copy to target folder
+python generate_images.py  \
+    --dataset=mnist \
+    --image_dir=${TARGET}/images \
+    --image_format=jpg \
+    --max_images=${SDCARD_IMAGES}
+
 echo "  Copied images to target folder"
 
 echo "-----------------------------------------"

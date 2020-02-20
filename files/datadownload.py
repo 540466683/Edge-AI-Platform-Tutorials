@@ -1,5 +1,5 @@
 '''
- Copyright 2019 Xilinx Inc.
+ Copyright 2020 Xilinx Inc.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -25,9 +25,9 @@ tf.logging.set_verbosity(tf.logging.INFO)
 
 def datadownload():
     
-    # CIFAR10 dataset has 60k images. Training set is 50k, test set is 10k.
-    # Each image is 32x32x8bits
-    (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
+    # MNIST dataset has 70k images. Training set is 60k, test set is 10k.
+    # Each image is 28x28x8bits
+    (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
     
     # Scale image data from range 0:255 to range 0:1.0
     # Also converts train & test data to float from uint8
@@ -39,11 +39,17 @@ def datadownload():
     y_test = tf.keras.utils.to_categorical(y_test, num_classes=10)
     
     # take 5000 images & labels from the train dataset to create a validation set
-    x_valid = x_train[45000:]
-    y_valid = y_train[45000:]
+    x_valid = x_train[55000:]
+    y_valid = y_train[55000:]
     
-    # train dataset reduced to 45000 images
-    x_train = x_train[:45000]
-    y_train = y_train[:45000]
+    # train dataset reduced to 55000 images
+    x_train = x_train[:55000]
+    y_train = y_train[:55000]
+
+    # reshape
+    x_train = x_train.reshape(x_train.shape[0],28,28,1)
+    x_test = x_test.reshape(x_test.shape[0],28,28,1)
+    x_valid = x_valid.reshape(x_valid.shape[0],28,28,1)
+    
         
     return (x_train,y_train), (x_test,y_test), (x_valid,y_valid)

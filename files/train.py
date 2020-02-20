@@ -1,5 +1,5 @@
 '''
- Copyright 2019 Xilinx Inc.
+ Copyright 2020 Xilinx Inc.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -35,8 +35,6 @@ def train(input_height,input_width,input_chan,epochs,learnrate, \
     INFER_GRAPH_FILENAME =os.path.basename(infer_graph_path)
     
     print('\nDATASET PREPARATION:')
-    # CIFAR10 dataset has 60k images. Training set is 50k, test set is 10k.
-    # Each image is 32x32x8bits
     (x_train, y_train), (x_test, y_test), (x_valid, y_valid) = datadownload()    
 
 
@@ -120,7 +118,7 @@ def train(input_height,input_width,input_chan,epochs,learnrate, \
                 writer.add_summary(s, (epoch*total_batches + i))
 
             # check training accuracy at end of epoch
-            test_acc = sess.run(accuracy, feed_dict={images_in: x_test[:1000], labels: y_test[:1000]})
+            test_acc = sess.run(accuracy, feed_dict={images_in: x_test, labels: y_test})
             print (" Epoch", epoch+1, "/", epochs, '- accuracy: {:1.4f}'.format(test_acc))
 
         writer.flush()
@@ -130,7 +128,7 @@ def train(input_height,input_width,input_chan,epochs,learnrate, \
         # Validation phase with validation dataset
         # calculate accuracy with 'unseen' data
         print("\nVALIDATION:")
-        valid_feed_dict={images_in: x_valid[:1000], labels: y_valid[:1000]}
+        valid_feed_dict={images_in: x_valid, labels: y_valid}
         valid_acc = sess.run(accuracy, feed_dict=valid_feed_dict)
         print (' Trained model accuracy with validation set: {:1.4f}'.format(valid_acc))
 

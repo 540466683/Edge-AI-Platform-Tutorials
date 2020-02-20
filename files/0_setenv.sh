@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright 2019 Xilinx Inc.
+# Copyright 2020 Xilinx Inc.
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -44,14 +44,14 @@ export EVAL_Q_LOG=eval_quant_graph.log
 export COMP_LOG=compile.log
 
 # training parameters
-export EPOCHS=100
+export EPOCHS=50
 export LEARNRATE=0.0001
-export BATCHSIZE=50
+export BATCHSIZE=100
 
 # network parameters
-export INPUT_HEIGHT=32
-export INPUT_WIDTH=32
-export INPUT_CHAN=3
+export INPUT_HEIGHT=28
+export INPUT_WIDTH=28
+export INPUT_CHAN=1
 export INPUT_SHAPE=?,${INPUT_HEIGHT},${INPUT_WIDTH},${INPUT_CHAN}
 export INPUT_NODE=images_in
 export OUTPUT_NODE=dense_1/BiasAdd
@@ -66,5 +66,8 @@ export DPU_MODE=normal
 export BOARD=ZCU102
 export ARCH=/opt/vitis_ai/compiler/arch/dpuv2/${BOARD}/${BOARD}.json
 
-# number of images used in calibration and copied to SD card
-export NUM_IMAGES=1000
+# number of images used in calibration
+export CALIB_IMAGES=1000
+
+# number of images copied to SD card
+export SDCARD_IMAGES=5000

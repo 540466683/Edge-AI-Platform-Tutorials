@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright 2019 Xilinx Inc.
+# Copyright 2020 Xilinx Inc.
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@ run_quant() {
 
   # create image files for calibration
   python generate_images.py  \
-      --dataset=cifar10 \
+      --dataset=mnist \
       --image_dir=${QUANT}/images \
       --image_format=jpg \
       --image_list=calib_list.txt \
-      --max_images=${NUM_IMAGES}
+      --max_images=${CALIB_IMAGES}
 
   # log the quantizer version being used
   vai_q_tensorflow --version
