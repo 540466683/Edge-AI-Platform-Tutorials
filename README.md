@@ -5,6 +5,7 @@
   </tr>
 
 </table>
+
 ### Current status
 
 1. Tested with Vitis-AI 1.0
