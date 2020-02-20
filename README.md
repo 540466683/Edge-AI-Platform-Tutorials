@@ -1,6 +1,6 @@
 <table style="width:100%">
   <tr>
-    <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>CIFAR10 Classification with TensorFlow</h2>
+    <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>CIFAR10 Classification using Vitis AI and TensorFlow</h2>
 </th>
   </tr>
 
@@ -8,7 +8,7 @@
 
 ### Current status
 
-1. Tested with Vitis-AI 1.0
+1. Tested with Vitis AI 1.0
 2. Tested in hardware on ZCU102
 
 Any questions, comments or errors found - please email me directly:  mark.harvey@xilinx.com
@@ -16,9 +16,9 @@ Any questions, comments or errors found - please email me directly:  mark.harvey
 
 ## 1. Introduction
 
-This tutorial introduces the user to the Vitis-AI TensorFlow design process and will illustrate how to go from a python description of the network model to running a compiled model on the Xilinx DPU accelerator.
+This tutorial introduces the user to the Vitis AI TensorFlow design process and will illustrate how to go from a python description of the network model to running a compiled model on the Xilinx DPU accelerator.
 
-The application code in this example design is written in Python and uses the Unified APIs that were introduced in Vitis-AI 1.0.
+The application code in this example design is written in Python and uses the Unified APIs that were introduced in Vitis AI 1.0.
 
 We will run the following steps:
 
@@ -68,11 +68,11 @@ The convolutional neural network in this design is extremely simple and consists
     + Either the vitis-ai-docker-tools GPU image or the vitis-ai-docker-tools CPU image.
     + A terminal emulator and/or SSH Client such as Putty.
 
-See the <a href="https://github.com/Xilinx/Vitis-AI">Vitis-AI GitHub README.md</a> for details.
+See the <a href="https://github.com/Xilinx/Vitis-AI">Vitis AI GitHub README.md</a> for details.
 
   + The host machine will need access to the internet for downloading files.
   + A ZCU102 or other supported evaluation board.
-  + This tutorial assumes the user is familiar with Vitis-AI, Python3, TensorFlow and has some knowledge of machine learning principles.
+  + This tutorial assumes the user is familiar with Vitis AI, Python3, TensorFlow and has some knowledge of machine learning principles.
 
 
 ## 5. Shell scripts
@@ -115,7 +115,7 @@ All images are undergo simple pre-processing before being used for training, eva
 
 1. Clone or download this GitHub repository to your local machine where you have installed the necessary tools.
 
-2. Open a terminal and ``cd`` into the repository folder. Start the Vitis-AI tools docker - depending on where you have installed it, the command will look something like this:
+2. Open a terminal and ``cd`` into the repository folder. Start the Vitis AI tools docker - depending on where you have installed it, the command will look something like this:
 
  ``/home/username/Vitis-AI/docker_run.sh xilinx/vitis-ai:tools-1.0.0-gpu``
 
