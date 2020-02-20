@@ -11,11 +11,11 @@
  <td width="50%" align="center"><b>Description</b></td>
  </tr>
  <tr>
- <td align="center"><a href="https://github.com/Xilinx/Edge-AI-Platform-Tutorials/tree/MNIST-Classification-TensorFlow">MNIST Classification with Vitis AI (UG1337)</a></td>
+ <td align="center"><a href="https://github.com/Xilinx/Edge-AI-Platform-Tutorials/tree/MNIST-Classification-TensorFlow">MNIST Classification using Vitis-AI and TensorFlow (UG1337)</a></td>
  <td>
 Learn the DNNDK v3.0 TensorFlow design process for creating a compiled ELF file that is ready for deployment on the Xilinx&reg; DPU accelerator from a simple network model built using Python. This tutorial uses the MNIST test dataset.</td>
  </tr><tr>
- <td align="center"><a href="https://github.com/Xilinx/Edge-AI-Platform-Tutorials/tree/CIFAR10-Classification-with-TensorFlow">CIFAR10 Classification with TensorFlow (UG1338)</a></td>
+ <td align="center"><a href="https://github.com/Xilinx/Edge-AI-Platform-Tutorials/tree/CIFAR10-Classification-with-TensorFlow">CIFAR10 Classification using Vitis AI and TensorFlow (UG1338)</a></td>
  <td>
 Learn the DNNDK v3.0 TensorFlow design process for creating a compiled ELF file that is ready for deployment on the Xilinx&reg; DPU accelerator from a simple network model built using Python. This tutorial uses the CIFAR-10 test dataset.</td>
  </tr>
