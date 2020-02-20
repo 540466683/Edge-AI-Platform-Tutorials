@@ -1,5 +1,10 @@
-# CIFAR10 classification with Vitis-AI
+<table style="width:100%">
+  <tr>
+    <th width="100%" colspan="6"><img src="https://www.xilinx.com/content/dam/xilinx/imgs/press/media-kits/corporate/xilinx-logo.png" width="30%"/><h1>CIFAR10 Classification with TensorFlow</h2>
+</th>
+  </tr>
 
+</table>
 
 ### Current status
 
