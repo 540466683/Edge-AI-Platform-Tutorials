@@ -8,10 +8,7 @@
 
 ### Current status
 
-1. Tested with Vitis AI 1.0
-
-Any questions, comments or errors found - please email me directly:  mark.harvey@xilinx.com
-
+Tested with Vitis AI 1.0
 
 ## 1. Introduction
 
@@ -20,7 +17,7 @@ When using TensorFlow and Vitis-AI, we are required to supply a 'frozen graph' i
 Things are not so easy when you use the Keras standalone library as its native 'save' format is HDF5 or a mix of JSON and HDF5, so we need a way of translating those into binary protobuf format.
 
 ``
-There are 3 ways to save a Keras model:
+There are three ways to save a Keras model:
 
 + Method #1: Using HDF5 checkpoints during training.
 + Method #2: By saving the complete model in HDF5 format.
