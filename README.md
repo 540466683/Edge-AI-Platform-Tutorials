@@ -11,9 +11,6 @@
 1. Tested with Vitis AI 1.0
 2. Tested in hardware on ZCU102
 
-Any questions, comments or errors found - please email me directly:  mark.harvey@xilinx.com
-
-
 ## 1. Introduction
 
 This tutorial introduces the user to the Vitis AI TensorFlow design process and will illustrate how to go from a python description of the network model to running a compiled model on the Xilinx DPU accelerator.
