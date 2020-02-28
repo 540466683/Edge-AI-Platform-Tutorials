@@ -37,7 +37,7 @@ We will run the following steps:
 The MNIST hadwritten digits dataset is a publically available dataset that contains a total of 70k 8bit grayscale images each of which are 28pixels x 28pixels. The datset dataset is considered to be the 'hello world' of machine learning. The complete dataset of 70k images is normally divided into 60k images for training and 10k images for validation.
 
 
-![Alt text](./img/mnist.png?raw=true "Example MNIST images")
+![Alt text](./files/img/mnist.png?raw=true "Example MNIST images")
 
 
 ## 3. The convolution neural network
@@ -114,7 +114,7 @@ If you are running the training step, it is highly recommnded to use the GPU ver
 3. Activate the TensorFlow virtual environment with ``conda activate vitis-ai-tensorflow``.
 
 
-![Alt text](./img/tools_docker.png?raw=true "tools_docker")
+![Alt text](./files/img/tools_docker.png?raw=true "tools_docker")
 
 
 
@@ -187,4 +187,4 @@ python3 mnist_app.py -t 2 -b 21 -j /home/root/target/dpuv2_rundir/
 The application will start and after a few seconds will show the throughput of the DPU in frames/sec, the accuracy and a list of any images that were incorrectly predicted:
 
 
-![Alt text](./img/run_app.png?raw=true "run_app")
+![Alt text](./files/img/run_app.png?raw=true "run_app")
